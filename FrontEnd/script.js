@@ -10,7 +10,7 @@ fetch("http://localhost:5678/api/works")
 );
 function displayProjects(projects) {
     const gallery = document.querySelector(".gallery");
-    gallery.innerHTML = ""; // Clear out the praceholder projects
+    gallery.innerHTML = ""; // Clear out existing content
 
     projects.forEach((project) => {
         const figure = document.createElement("figure");
