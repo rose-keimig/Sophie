@@ -51,8 +51,10 @@ function displayCategories(categories) {
     // Create "All" button
     const allButton = document.createElement("button");
     allButton.innerText = "All";
+    allButton.classList.add("active");
     allButton.addEventListener("click", () => {
         displayProjects(allProjects);
+        setActiveButton(allButton);
     });
     menu.appendChild(allButton);
 
@@ -65,7 +67,17 @@ function displayCategories(categories) {
                 (project) => project.categoryId === category.id
             );
             displayProjects(filtered);
+            setActiveButton(button);
         });
         menu.appendChild(button);
     });
+}
+
+// switches active class for category buttons
+function setActiveButton(activeButton) {
+    const buttons = document.querySelectorAll(".categories-filter button");
+    buttons.forEach((button) => {
+        button.classList.remove("active");
+    });
+    activeButton.classList.add("active");
 }
