@@ -1,3 +1,5 @@
+console.log("login.js running")
+
 let allProjects = [];
 
 // fetch and dsiplay projects
@@ -81,3 +83,24 @@ function setActiveButton(activeButton) {
     });
     activeButton.classList.add("active");
 }
+
+// Login functionality
+const loginForm = document.getElementById("login-form");
+const errorMessage = document.querySelector(".error-message");
+
+//Dummy credentials
+const validEmail = "user@example.com";
+const validPassword = "password";
+
+loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const email = loginForm.email.value;
+    const password = loginForm.password.value;
+
+    if (email === validEmail && password === validPassword) {
+        window.location.href = "index.html"; // Redirect to the main page
+    } else {
+        errorMessage.style.display = "block";
+    }
+});
