@@ -1,4 +1,4 @@
-console.log("login.js running")
+console.log("JS loaded")
 
 let allProjects = [];
 
@@ -76,7 +76,7 @@ function displayCategories(categories) {
 }
 
 // switches active class for category buttons
-function setActiveButton(activeButton) {https://www.costco.com/CheckoutCartView
+function setActiveButton(activeButton) {
     const buttons = document.querySelectorAll(".categories-filter button");
     buttons.forEach((button) => {
         button.classList.remove("active");
@@ -95,11 +95,11 @@ const validPassword = "S0phie";
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-loginForm.email.addEventListener("submit", (event) => {
+loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const email = loginForm.email.value.trim();
-    const password = loginForm.password.value();
+    const password = loginForm.password.value.trim();
 
     //check email format
     if (!emailPattern.test(email)) {
@@ -107,6 +107,11 @@ loginForm.email.addEventListener("submit", (event) => {
         errorMessage.style.display = "block";
         return;
     }
+
+    console.log("Entered email:", email);
+    console.log("Entered password:", password);
+    console.log("Expected email:", validEmail);
+    console.log("Expected password:", validPassword);
 
     //check credentials
     if (email === validEmail && password === validPassword) {
