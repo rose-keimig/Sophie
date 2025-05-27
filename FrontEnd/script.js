@@ -76,7 +76,7 @@ function displayCategories(categories) {
 }
 
 // switches active class for category buttons
-function setActiveButton(activeButton) {
+function setActiveButton(activeButton) {https://www.costco.com/CheckoutCartView
     const buttons = document.querySelectorAll(".categories-filter button");
     buttons.forEach((button) => {
         button.classList.remove("active");
@@ -88,19 +88,31 @@ function setActiveButton(activeButton) {
 const loginForm = document.getElementById("login-form");
 const errorMessage = document.querySelector(".error-message");
 
-//Dummy credentials
-const validEmail = "user@example.com";
-const validPassword = "password";
+//README credentials
+const validEmail = "sophie.bluel@test.tld";
+const validPassword = "S0phie";
 
-loginForm.addEventListener("submit", (event) => {
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+loginForm.email.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const email = loginForm.email.value;
-    const password = loginForm.password.value;
+    const email = loginForm.email.value.trim();
+    const password = loginForm.password.value();
 
+    //check email format
+    if (!emailPattern.test(email)) {
+        errorMessage.textContent = "Please enter a valid email address.";
+        errorMessage.style.display = "block";
+        return;
+    }
+
+    //check credentials
     if (email === validEmail && password === validPassword) {
-        window.location.href = "index.html"; // Redirect to the main page
+        window.location.href = "index.html"; 
     } else {
+        errorMessage.textContent = "Invalid email or password.";
         errorMessage.style.display = "block";
     }
 });
