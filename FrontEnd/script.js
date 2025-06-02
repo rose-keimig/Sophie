@@ -91,7 +91,7 @@ const errorMessage = document.querySelector(".error-message");
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-loginForm.addEventListener("submit", (event) => {
+loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const email = loginForm.email.value.trim();
@@ -105,7 +105,7 @@ loginForm.addEventListener("submit", (event) => {
     }
 
     try {
-        const response = await fetch("http://localhost:5678/api/auth/login", {
+        const response = await fetch("http://localhost:5678/api/users/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -118,9 +118,11 @@ loginForm.addEventListener("submit", (event) => {
         }
 
         const data = await response.json();
+        console.log("Login response:", data);
 
-        if (data.success) {
+        if (data.token) {
             localStorage.setItem("token", data.token);
+            localStorage.setItem("userId", data.userId);
             window.location.href = "index.html";
         } else {
             errorMessage.textContent = "Invalid email or password.";
