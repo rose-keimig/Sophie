@@ -88,10 +88,6 @@ function setActiveButton(activeButton) {
 const loginForm = document.getElementById("login-form");
 const errorMessage = document.querySelector(".error-message");
 
-//README credentials
-const validEmail = "sophie.bluel@test.tld";
-const validPassword = "S0phie";
-
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
@@ -107,12 +103,32 @@ loginForm.addEventListener("submit", (event) => {
         errorMessage.style.display = "block";
         return;
     }
-    
-    //check credentials
-    if (email === validEmail && password === validPassword) {
-        window.location.href = "index.html"; 
-    } else {
-        errorMessage.textContent = "Invalid email or password.";
+
+    try {
+        const response = await fetch("http://localhost:5678/api/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        if (!response.ok) {
+            throw new Error("Nework or auth error");
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+            localStorage.setItem("token", data.token);
+            window.location.href = "index.html";
+        } else {
+            errorMessage.textContent = "Invalid email or password.";
+            errorMessage.style.display = "block";
+        }
+    } catch (error) {
+        console.error("Login error:", error);
+        errorMessage.textContent = "Login failed. Please try again.";
         errorMessage.style.display = "block";
     }
 });
