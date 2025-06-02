@@ -107,12 +107,7 @@ loginForm.addEventListener("submit", (event) => {
         errorMessage.style.display = "block";
         return;
     }
-
-    console.log("Entered email:", email);
-    console.log("Entered password:", password);
-    console.log("Expected email:", validEmail);
-    console.log("Expected password:", validPassword);
-
+    
     //check credentials
     if (email === validEmail && password === validPassword) {
         window.location.href = "index.html"; 
