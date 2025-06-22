@@ -65,13 +65,18 @@
 		</ul>
 	</nav>
 </footer>
-<section class="modal hidden"></section>
+<!--Modal-->
+<section id="photoModal" class="modal hidden"></section>
 <section class="modal hidden">
 	<div class="flex">
 	  <button class="btn-close">⨉</button>
 	</div>
-	<div>
+	<div id="modalGalleryView">
 	  <h1>Photo Gallery</h1>
+	  <div class="gallery-grid">
+	  </div>
+	  <hr class="divider"/>
+	  <button id="addPhotoButton" class="button">Add a photo</button>
 	</div>
   
 	<input type="email" id="email" placeholder="brendaneich@js.com" />
@@ -79,6 +84,6 @@
   </section>
   
   <div class="overlay hidden"></div>
-  <button class="btn btn-open">Open Modal</button>
+  <button class="button btn-open">Open Modal</button>
 </body>
 </html>

@@ -151,6 +151,19 @@ li:hover {
 	text-align: center;
 }
 
+.button {
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	background-color: #1D6154;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+	padding: 10px;
+	min-width: 100px;
+	text-align: center;
+}
+
 .categories-filter button.active {
 	background-color: #1D6154;
 	color: white;
